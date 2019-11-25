@@ -1,15 +1,15 @@
 package com.assignment.backend.model;
 
 public class Account {
-    private long balance;
+    private long minorUnitBalance;
     private Long number;
 
-    public long getBalance() {
-        return balance;
+    public long getMinorUnitBalance() {
+        return minorUnitBalance;
     }
 
-    public void setBalance(long balance) {
-        this.balance = balance;
+    public void setMinorUnitBalance(long minorUnitBalance) {
+        this.minorUnitBalance = minorUnitBalance;
     }
 
     public Long getNumber() {
@@ -23,7 +23,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "balance=" + balance +
+                "balance=" + minorUnitBalance +
                 ", number=" + number +
                 '}';
     }

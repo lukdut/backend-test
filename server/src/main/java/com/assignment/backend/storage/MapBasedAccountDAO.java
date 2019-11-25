@@ -28,7 +28,7 @@ public class MapBasedAccountDAO implements InHeapAccountDAO {
 
         Account account = new Account();
         account.setNumber(number);
-        account.setBalance(0);
+        account.setMinorUnitBalance(0);
 
         accountStorage.put(account.getNumber(), account);
         return account;

@@ -22,14 +22,13 @@ public class Server {
     private static final long DEFAULT_BALANCE = 1000;
 
     public static void main(String[] args) {
-
         final InHeapAccountDAO mapBasedAccountDAO = new MapBasedAccountDAO(new IncrementalIdGenerator());
         final TransferService transferService = new InMemoryTransferService(new NoCreditAllowedArbiter());
         final RequestHandler requestHandler = new RequestHandler(mapBasedAccountDAO::getByNumber, transferService);
 
         for (int i = 0; i < TOTAL_ACCOUNTS; i++) {
             Account account = mapBasedAccountDAO.createNewAccount();
-            account.setBalance(DEFAULT_BALANCE);
+            account.setMinorUnitBalance(DEFAULT_BALANCE);
         }
 
         final int port = 8080;

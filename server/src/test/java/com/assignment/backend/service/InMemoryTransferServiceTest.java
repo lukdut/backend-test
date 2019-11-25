@@ -57,7 +57,7 @@ public class InMemoryTransferServiceTest {
                 accountTo, 1);
 
         Assert.assertTrue(isTransferred);
-        Assert.assertEquals(11, accountTo.getBalance());
-        Assert.assertEquals(9, accountFrom.getBalance());
+        Assert.assertEquals(11, accountTo.getMinorUnitBalance());
+        Assert.assertEquals(9, accountFrom.getMinorUnitBalance());
     }
 }

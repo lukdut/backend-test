@@ -2,9 +2,12 @@ package com.assignment.backend.service;
 
 import com.assignment.backend.model.Account;
 
-public class NoCreditAllowedArbiter implements TransferArbiter{
+/**
+ * TransferArbiter implementation that forbids negative account balance
+ */
+public class NoCreditAllowedArbiter implements TransferArbiter {
     @Override
     public boolean isTransferAllowed(Account accountFrom, Account accountTo, long amount) {
-        return accountFrom.getBalance() - amount >= 0;
+        return accountFrom.getMinorUnitBalance() - amount >= 0;
     }
 }

@@ -30,7 +30,7 @@ public class FunctionalTest {
         //prepare Accounts
         for (int i = 0; i < ACCOUNTS_AMOUNT; i++) {
             Account account = mapBasedAccountDAO.createNewAccount();
-            account.setBalance(START_BALANCE);
+            account.setMinorUnitBalance(START_BALANCE);
         }
 
         //perform transfers
@@ -59,7 +59,7 @@ public class FunctionalTest {
         for (int i = 0; i < ACCOUNTS_AMOUNT; i++) {
             Account account = mapBasedAccountDAO.getByNumber((long) i).get();
             System.out.println(account);
-            totalEndBalance += account.getBalance();
+            totalEndBalance += account.getMinorUnitBalance();
         }
 
         Assert.assertEquals(totalStartBalance, totalEndBalance);

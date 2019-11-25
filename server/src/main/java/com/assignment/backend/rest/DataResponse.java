@@ -1,5 +1,11 @@
 package com.assignment.backend.rest;
 
+
+/**
+ * Rest method response
+ *
+ * @param <T> return value
+ */
 public class DataResponse<T> {
     private static final DataResponse OK_DATA_RESPONSE = new DataResponse<>(null, null);
 

@@ -10,6 +10,14 @@ public class InMemoryTransferService implements TransferService {
         this.transferArbiter = transferArbiter;
     }
 
+    /**
+     * Performs money transfer given the fact that accounts store in heap memory
+     *
+     * @param accountFrom account to withdraw money
+     * @param accountTo   account to deposit money
+     * @param amount      value to transfer
+     * @return true in case of successful transfer, false otherwise
+     */
     @Override
     public boolean transfer(Account accountFrom, Account accountTo, long amount) {
         Account first = accountFrom.getNumber() > accountTo.getNumber() ? accountFrom : accountTo;
@@ -18,8 +26,8 @@ public class InMemoryTransferService implements TransferService {
         synchronized (first) {
             synchronized (second) {
                 if (transferArbiter.isTransferAllowed(accountFrom, accountTo, amount)) {
-                    accountFrom.setBalance(accountFrom.getBalance() - amount);
-                    accountTo.setBalance(accountTo.getBalance() + amount);
+                    accountFrom.setMinorUnitBalance(accountFrom.getMinorUnitBalance() - amount);
+                    accountTo.setMinorUnitBalance(accountTo.getMinorUnitBalance() + amount);
                     return true;
                 }
                 return false;
